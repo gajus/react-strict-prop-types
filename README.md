@@ -5,13 +5,18 @@
 
 A higher order component that raises an error if a component is used with an unknown property. A property is considered unknown when it is not defined in the component `propTypes` declaration.
 
-```
-Using undefined property "foo". Define the missing property in "Test" component propTypes declaration.
-```
-
+- [Error](#error)
 - [Usage](#usage)
 - [Options](#options)
     - [`allowHTMLProps`](#allowhtmlprops)
+
+## Error
+
+The equivalent of the following `console.warn` message is produced when a component is used with an unknown property.
+
+```
+Using undefined property "foo". Define the missing property in "Test" component propTypes declaration.
+```
 
 ## Usage
 
