@@ -1,0 +1,40 @@
+{
+  "name": "react-strict-prop-types",
+  "description": "",
+  "main": "dist/index.js",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/gajus/react-strict-prop-types"
+  },
+  "keywords": [
+    "react-component",
+    "react",
+    "strict",
+    "propTypes"
+  ],
+  "version": "0.0.0",
+  "author": {
+    "name": "Gajus Kuizinas",
+    "email": "gk@anuary.com",
+    "url": "http://gajus.com"
+  },
+  "license": "BSD-3-Clause",
+  "devDependencies": {
+    "babel": "^5.8.21",
+    "babel-eslint": "^4.1.0",
+    "chai": "^3.2.0",
+    "eslint": "^1.2.1",
+    "eslint-plugin-react": "^3.3.0",
+    "jsdom": "^6.2.0",
+    "mocha": "^2.2.5",
+    "react": "^0.14.0-beta3",
+    "react-addons-test-utils": "^0.14.0-beta3",
+    "sinon": "^1.16.1"
+  },
+  "scripts": {
+    "lint": "babel-node ./node_modules/.bin/eslint ./src/ ./test/",
+    "test": "npm run lint && mocha",
+    "build": "babel ./src/ --out-dir ./dist/",
+    "watch": "babel --watch ./src/ --out-dir ./dist/"
+  }
+}
