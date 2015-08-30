@@ -3,7 +3,15 @@
 [![Travis build status](http://img.shields.io/travis/gajus/react-strict-prop-types/master.svg?style=flat)](https://travis-ci.org/gajus/react-strict-prop-types)
 [![NPM version](http://img.shields.io/npm/v/react-strict-prop-types.svg?style=flat)](https://www.npmjs.org/package/react-strict-prop-types)
 
-A higher order component that raises an error if component is used with an unknown property. A property is unknown when it is not defined in the `propTypes` declaration.
+A higher order component that raises an error if a component is used with an unknown property. A property is considered unknown when it is not defined in the component `propTypes` declaration.
+
+```
+Using undefined property "foo". Define the missing property in "Test" component propTypes declaration.
+```
+
+- [Usage](#usage)
+- [Options](#options)
+    - [`allowHTMLProps`](#allowhtmlprops)
 
 ## Usage
 
@@ -12,12 +20,6 @@ A higher order component that raises an error if component is used with an unkno
  * @typedef StrictPropTypes~Options
  * @see {@link https://github.com/gajus/react-strict-prop-types#options}
  * @property {Boolean} allowHTMLProps
- */
-
-/**
- * @param {Function} Component
- * @param {StrictPropTypes~Options} options
- * @return {Function}
  */
 ```
 
@@ -33,15 +35,24 @@ class Test extends React.Component {
     }
 }
 
+/**
+ * @param {Function} Component
+ * @param {StrictPropTypes~Options} options
+ * @return {Function}
+ */
 export default StrictPropTypes(Test);
 ```
 
-You can use the the [ES7 decorators](https://github.com/wycats/javascript-decorators) syntax:
+You can decorate your component using the [ES7 decorators](https://github.com/wycats/javascript-decorators) syntax, e.g.
 
 ```js
 import React from 'react';
 import StrictPropTypes from 'react-strict-prop-types';
 
+/**
+ * @param {StrictPropTypes~Options} options
+ * @return {Function}
+ */
 @StrictPropTypes()
 export default class extends React.Component {
     render () {
