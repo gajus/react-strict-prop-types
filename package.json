@@ -36,5 +36,8 @@
     "test": "npm run lint && mocha",
     "build": "babel ./src/ --out-dir ./dist/",
     "watch": "babel --watch ./src/ --out-dir ./dist/"
+  },
+  "dependencies": {
+    "lodash": "^3.10.1"
   }
 }
