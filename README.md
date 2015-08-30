@@ -5,13 +5,13 @@
 
 A higher order component that raises an error if a component is used with an unknown property. A property is considered unknown when it is not defined in the component `propTypes` declaration.
 
-For an alternative that runs during the compile time, read about the [ESLint `prop-types` rule](#eslint-prop-types). 
+For an alternative that runs at the compilation time, read about the [ESLint `prop-types` rule](#eslint-prop-types-rule). 
 
 - [Error](#error)
 - [Usage](#usage)
 - [Options](#options)
     - [`allowHTMLProps`](#allowhtmlprops)
-- [ESLint `prop-types` Rule](#eslint-prop-types)
+- [ESLint `prop-types` Rule](#eslint-prop-types-rule)
 
 ## Error
 
@@ -91,13 +91,18 @@ Allows all HTML properties (including `data-*`).
 
 [eslint-plugin-react](https://github.com/yannickcr/eslint-plugin-react) [`prop-types`](https://github.com/yannickcr/eslint-plugin-react/blob/master/docs/rules/prop-types.md) rule is an alternative to `react-strict-prop-types`. The difference is:
 
-* `prop-types` runs during the compilation step. It checks for references to undocumented properties inside of the component.
-* `strict-prop-types` runs during the runtime. It checks for undocumented properties being passed to the component.
+| `prop-types` | `react-strict-prop-types`|
+| --- | --- |
+| Runs during the compilation step. |  Runs during the runtime. |
+| Checks for references to undocumented properties inside of the component. | Checks for undocumented properties being passed to the component. |
 
-The biggest disadvantage of ESLint rule is that it will not work when `propTypes` is assigned an external object. This will not produce a warning using ESLint `prop-types` rule:
+The biggest disadvantage of ESLint rule is that it will not produce a warning when `propTypes` is assigned an external object, e.g.
 
 ```js
-class Test {
+import React from 'react';
+import testPropTypes from './testPropTypes';
+
+class Test extends React.Component {
     static propTypes = testPropTypes;
 
     render () {
