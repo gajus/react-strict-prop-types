@@ -6,7 +6,7 @@ import React from 'react';
 import TestUtils from 'react-addons-test-utils';
 import jsdom from 'jsdom';
 import sinon from 'sinon';
-import strictPropTypes from './../src/strictPropTypes';
+import strictPropTypes from './../dist/strictPropTypes';
 
 describe('strictPropTypes', () => {
     let Bar,

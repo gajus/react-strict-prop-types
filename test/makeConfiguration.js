@@ -2,7 +2,7 @@ import {
     expect
 } from 'chai';
 
-import makeConfiguration from './../src/makeConfiguration';
+import makeConfiguration from './../dist/makeConfiguration';
 
 describe('makeConfiguration', () => {
     describe('when using default configuration', () => {
