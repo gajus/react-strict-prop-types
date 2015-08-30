@@ -89,12 +89,14 @@ Allows all HTML properties (including `data-*`).
 
 ## ESLint `prop-types` Rule
 
-[eslint-plugin-react](https://github.com/yannickcr/eslint-plugin-react) [`prop-types`](https://github.com/yannickcr/eslint-plugin-react/blob/master/docs/rules/prop-types.md) rule is an alternative to `react-strict-prop-types`. The difference is:
+[`eslint-plugin-react`](https://github.com/yannickcr/eslint-plugin-react) [`prop-types`](https://github.com/yannickcr/eslint-plugin-react/blob/master/docs/rules/prop-types.md) rule is an alternative to `react-strict-prop-types`. The difference is:
 
 | `prop-types` | `react-strict-prop-types`|
 | --- | --- |
 | Runs during the compilation step. |  Runs during the runtime. |
 | Checks for references to undocumented properties inside of the component. | Checks for undocumented properties being passed to the component. |
+
+`eslint-plugin-react` `prop-types` and `react-strict-prop-types` can be used together.
 
 The biggest disadvantage of ESLint rule is that it will not produce a warning when `propTypes` is assigned an external object, e.g.
 
