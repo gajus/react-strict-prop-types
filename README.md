@@ -14,9 +14,7 @@ A higher order component that raises an error if a component is used with an unk
 
 The equivalent of the following `console.warn` message is produced when a component is used with an unknown property.
 
-```
-Using undefined property "foo". Define the missing property in "Test" component propTypes declaration.
-```
+> Using undefined property "foo". Define the missing property in "Test" component propTypes declaration.
 
 ## Usage
 
