@@ -109,6 +109,7 @@ class Test extends React.Component {
 export default StrictPropTypes(Test, {
     disable: process.env.NODE_ENV === 'production'
 });
+```
 
 ## ESLint `prop-types` Rule
 
