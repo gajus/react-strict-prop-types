@@ -11,7 +11,6 @@ For an alternative that runs at the compilation time, read about the [ESLint `pr
 - [Usage](#usage)
 - [Options](#options)
     - [`allowHTMLProps`](#allowhtmlprops)
-    - [`disable`](#disable)
 - [ESLint `prop-types` Rule](#eslint-prop-types-rule)
 
 ## Error
@@ -87,28 +86,6 @@ or as a first parameter to the decorator:
 Default: `false`.
 
 Allows all HTML properties (including `data-*`).
-
-#### `disable`
-
-Default: `false`.
-
-Makes `react-strict-prop-types` return the original component.
-
-This option is designed for use in production, e.g.
-
-```js
-import React from 'react';
-import StrictPropTypes from 'react-strict-prop-types';
-
-class Test extends React.Component {
-    render () {
-        return <div />;
-    }
-}
-
-export default StrictPropTypes(Test, {
-    disable: process.env.NODE_ENV === 'production'
-});
 
 ## ESLint `prop-types` Rule
 

@@ -72,22 +72,6 @@ describe('strictPropTypes', () => {
             expect(spy.calledWithExactly(`Using undefined property "unknownProperty". Define the missing property in "Foo" component propTypes declaration.`)).to.equal(true);
         });
     });
-    context('when options.disable', () => {
-        context('is true', () => {
-            it('returns the original object', () => {
-                let baz0,
-                    baz1;
-
-                baz0 = {};
-
-                baz1 = strictPropTypes(baz0, {
-                    disable: true
-                });
-
-                expect(baz1).to.equal(baz0);
-            });
-        });
-    });
     context('when options.allowHTMLProps', () => {
         context('is false', () => {
             context('when React.Component is called with an undefined DOM property', () => {

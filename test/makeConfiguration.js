@@ -16,11 +16,6 @@ describe('makeConfiguration', () => {
                 expect(configuration.allowHTMLProps).to.equal(false);
             });
         });
-        describe('disable property', () => {
-            it('defaults to false', () => {
-                expect(configuration.disable).to.equal(false);
-            });
-        });
     });
     describe('when unknown property is provided', () => {
         it('throws an error', () => {
