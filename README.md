@@ -72,7 +72,7 @@ export default class extends React.Component {
 
 `react-strict-prop-types` should not be used in production. One option to disable `react-strict-prop-types` in production is to use a custom wrapper, e.g.
 
-```
+```js
 // my-strict-prop-types.js
 import StrictPropTypes from 'react-strict-prop-types';
 
