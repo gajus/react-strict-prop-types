@@ -39,6 +39,10 @@ exports['default'] = function (Component, userConfiguration) {
 
     configuration = (0, _makeConfiguration2['default'])(userConfiguration);
 
+    if (configuration.disable) {
+        return Component;
+    }
+
     return (function (_Component) {
         _inherits(_class, _Component);
 

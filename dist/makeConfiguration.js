@@ -14,6 +14,7 @@ var _utils2 = _interopRequireDefault(_utils);
  * @typedef StrictPropTypes~Options
  * @see {@link https://github.com/gajus/react-strict-prop-types#options}
  * @property {Boolean} allowHTMLPropTypes
+ * @property {Boolean} disable
  */
 
 /**
@@ -27,7 +28,8 @@ exports['default'] = function () {
     var configuration = undefined;
 
     configuration = {
-        allowHTMLProps: false
+        allowHTMLProps: false,
+        disable: false
     };
 
     _utils2['default'].forEach(userConfiguration, function (value, name) {
