@@ -9,6 +9,7 @@ For an alternative that runs at the compilation time, read about the [ESLint `pr
 
 - [Error](#error)
 - [Usage](#usage)
+- [Production Mode](#production-mode)
 - [Options](#options)
     - [`allowHTMLProps`](#allowhtmlprops)
 - [ESLint `prop-types` Rule](#eslint-prop-types-rule)
@@ -64,6 +65,22 @@ export default class extends React.Component {
     render () {
         return <div />;
     }
+}
+```
+
+## Production Mode
+
+`react-strict-prop-types` should not be used in production. One option to disable `react-strict-prop-types` in production is to use a custom wrapper, e.g.
+
+```js
+// my-strict-prop-types.js
+import StrictPropTypes from 'react-strict-prop-types';
+
+export default (...args) => {
+    if (process.env.NODE_ENV === 'production') {
+        return args[0];
+    }
+    return StrictPropTypes(...args);
 }
 ```
 
