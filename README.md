@@ -9,6 +9,7 @@ A higher order component that raises an error if a component is used with an unk
 - [Usage](#usage)
 - [Options](#options)
     - [`allowHTMLProps`](#allowhtmlprops)
+    - [`disable`](#disable)
 
 ## Error
 
@@ -83,3 +84,26 @@ or as a first parameter to the decorator:
 Default: `false`.
 
 Allows all HTML properties (including `data-*`).
+
+#### `disable`
+
+Default: `false`.
+
+Makes `react-strict-prop-types` return the original component.
+
+This option is designed for use in production, e.g.
+
+```js
+import React from 'react';
+import StrictPropTypes from 'react-strict-prop-types';
+
+class Test extends React.Component {
+    render () {
+        return <div />;
+    }
+}
+
+export default StrictPropTypes(Test, {
+    disable: process.env.NODE_ENV === 'production'
+});
+```

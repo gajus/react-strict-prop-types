@@ -14,6 +14,10 @@ export default (Component, userConfiguration) => {
 
     configuration = makeConfiguration(userConfiguration);
 
+    if (configuration.disable) {
+        return Component;
+    }
+
     return class extends Component {
         validateProps (nextProps) {
             _.forEach(nextProps, (value, name) => {

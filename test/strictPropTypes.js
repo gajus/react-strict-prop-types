@@ -6,7 +6,7 @@ import React from 'react';
 import TestUtils from 'react-addons-test-utils';
 import jsdom from 'jsdom';
 import sinon from 'sinon';
-import strictPropTypes from './../dist/strictPropTypes';
+import strictPropTypes from './../src/strictPropTypes';
 
 describe('strictPropTypes', () => {
     let Bar,
@@ -70,6 +70,22 @@ describe('strictPropTypes', () => {
             TestUtils.renderIntoDocument(<Foo unknownProperty='' />);
 
             expect(spy.calledWithExactly(`Using undefined property "unknownProperty". Define the missing property in "Foo" component propTypes declaration.`)).to.equal(true);
+        });
+    });
+    context('when options.disable', () => {
+        context('is true', () => {
+            it('returns the original object', () => {
+                let baz0,
+                    baz1;
+
+                baz0 = {};
+
+                baz1 = strictPropTypes(baz0, {
+                    disable: true
+                });
+
+                expect(baz1).to.equal(baz0);
+            });
         });
     });
     context('when options.allowHTMLProps', () => {

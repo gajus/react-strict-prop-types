@@ -2,7 +2,7 @@ import {
     expect
 } from 'chai';
 
-import makeConfiguration from './../dist/makeConfiguration';
+import makeConfiguration from './../src/makeConfiguration';
 
 describe('makeConfiguration', () => {
     describe('when using default configuration', () => {
@@ -14,6 +14,11 @@ describe('makeConfiguration', () => {
         describe('allowHTMLProps property', () => {
             it('defaults to false', () => {
                 expect(configuration.allowHTMLProps).to.equal(false);
+            });
+        });
+        describe('disable property', () => {
+            it('defaults to false', () => {
+                expect(configuration.disable).to.equal(false);
             });
         });
     });
