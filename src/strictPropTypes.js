@@ -2,6 +2,7 @@
 
 import _ from './utils';
 import HTMLPropNames from './HTMLPropNames';
+import SVGPropNames from './SVGPropNames';
 import makeConfiguration from './makeConfiguration';
 
 /**
@@ -19,7 +20,13 @@ export default (Component, userConfiguration) => {
             _.forEach(nextProps, (value, name) => {
                 if (!Component.propTypes[name]) {
                     if (configuration.allowHTMLProps) {
-                        if (HTMLPropNames.indexOf(name) !== -1 || name.indexOf('data-') === 0) {
+                        if (HTMLPropNames.indexOf(name) !== -1 || name.indexOf('data-') === 0 || name.indexOf('aria-') === 0) {
+                            return;
+                        }
+                    }
+
+                    if (configuration.allowSVGProps) {
+                        if (SVGPropNames.indexOf(name) !== -1) {
                             return;
                         }
                     }

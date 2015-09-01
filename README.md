@@ -12,6 +12,7 @@ For an alternative that runs at the compilation time, read about the [ESLint `pr
 - [Production Mode](#production-mode)
 - [Options](#options)
     - [`allowHTMLProps`](#allowhtmlprops)
+    - [`allowSVGProps`](#allowsvgprops)
 - [ESLint `prop-types` Rule](#eslint-prop-types-rule)
 
 ## Error
@@ -102,7 +103,13 @@ or as a first parameter to the decorator:
 
 Default: `false`.
 
-Allows all HTML properties (including `data-*`).
+Allows all [HTML properties](https://facebook.github.io/react/docs/tags-and-attributes.html#html-attributes) (including `data-*` and `aria-*`).
+
+#### `allowSVGProps`
+
+Default: `false`.
+
+Allows all [SVG properties](https://facebook.github.io/react/docs/tags-and-attributes.html#svg-attributes).
 
 ## ESLint `prop-types` Rule
 

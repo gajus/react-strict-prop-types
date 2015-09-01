@@ -10,7 +10,9 @@ import strictPropTypes from './../src/strictPropTypes';
 
 describe('strictPropTypes', () => {
     let Bar,
+        Baz,
         Foo,
+        Qux,
         spy;
 
     beforeEach(() => {
@@ -45,7 +47,7 @@ describe('strictPropTypes', () => {
         });
 
         Bar = class extends React.Component {
-            static displayName = 'Foo';
+            static displayName = 'Bar';
 
             static propTypes = {
                 bar: React.PropTypes.string
@@ -58,6 +60,38 @@ describe('strictPropTypes', () => {
 
         Bar = strictPropTypes(Bar, {
             allowHTMLProps: true
+        });
+
+        Baz = class extends React.Component {
+            static displayName = 'Baz';
+
+            static propTypes = {
+                bar: React.PropTypes.string
+            };
+
+            render () {
+                return <div />;
+            }
+        };
+
+        Baz = strictPropTypes(Baz, {
+            allowSVGProps: false
+        });
+
+        Qux = class extends React.Component {
+            static displayName = 'Qux';
+
+            static propTypes = {
+                bar: React.PropTypes.string
+            };
+
+            render () {
+                return <div />;
+            }
+        };
+
+        Qux = strictPropTypes(Qux, {
+            allowSVGProps: true
         });
     });
 
@@ -93,6 +127,33 @@ describe('strictPropTypes', () => {
             context('when React.Component is called with data-* DOM property', () => {
                 it('does not throw an error', () => {
                     TestUtils.renderIntoDocument(<Bar data-test='' />);
+
+                    expect(spy.called).to.equal(false);
+                });
+            });
+            context('when React.Component is called with aria-* DOM property', () => {
+                it('does not throw an error', () => {
+                    TestUtils.renderIntoDocument(<Bar aria-test='' />);
+
+                    expect(spy.called).to.equal(false);
+                });
+            });
+        });
+    });
+    context('when options.allowSVGProps', () => {
+        context('is false', () => {
+            context('when React.Component is called with an undefined SVG property', () => {
+                it('throws an error', () => {
+                    TestUtils.renderIntoDocument(<Baz clipPath='' />);
+
+                    expect(spy.calledWithExactly(`Using undefined property "clipPath". Define the missing property in "Baz" component propTypes declaration.`)).to.equal(true);
+                });
+            });
+        });
+        context('is true', () => {
+            context('when React.Component is called with an undefined SVG property', () => {
+                it('does not throw an error', () => {
+                    TestUtils.renderIntoDocument(<Qux clipPath='' />);
 
                     expect(spy.called).to.equal(false);
                 });

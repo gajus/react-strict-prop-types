@@ -4,6 +4,7 @@ import _ from './utils';
  * @typedef StrictPropTypes~Options
  * @see {@link https://github.com/gajus/react-strict-prop-types#options}
  * @property {Boolean} allowHTMLPropTypes
+ * @property {Boolean} allowSVGProps
  */
 
 /**
@@ -14,7 +15,8 @@ export default (userConfiguration = {}) => {
     let configuration;
 
     configuration = {
-        allowHTMLProps: false
+        allowHTMLProps: false,
+        allowSVGProps: false
     };
 
     _.forEach(userConfiguration, (value, name) => {
