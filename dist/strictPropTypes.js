@@ -24,6 +24,10 @@ var _HTMLPropNames = require('./HTMLPropNames');
 
 var _HTMLPropNames2 = _interopRequireDefault(_HTMLPropNames);
 
+var _SVGPropNames = require('./SVGPropNames');
+
+var _SVGPropNames2 = _interopRequireDefault(_SVGPropNames);
+
 var _makeConfiguration = require('./makeConfiguration');
 
 var _makeConfiguration2 = _interopRequireDefault(_makeConfiguration);
@@ -38,10 +42,6 @@ exports['default'] = function (Component, userConfiguration) {
     var configuration = undefined;
 
     configuration = (0, _makeConfiguration2['default'])(userConfiguration);
-
-    if (configuration.disable) {
-        return Component;
-    }
 
     return (function (_Component) {
         _inherits(_class, _Component);
@@ -58,7 +58,13 @@ exports['default'] = function (Component, userConfiguration) {
                 _utils2['default'].forEach(nextProps, function (value, name) {
                     if (!Component.propTypes[name]) {
                         if (configuration.allowHTMLProps) {
-                            if (_HTMLPropNames2['default'].indexOf(name) !== -1 || name.indexOf('data-') === 0) {
+                            if (_HTMLPropNames2['default'].indexOf(name) !== -1 || name.indexOf('data-') === 0 || name.indexOf('aria-') === 0) {
+                                return;
+                            }
+                        }
+
+                        if (configuration.allowSVGProps) {
+                            if (_SVGPropNames2['default'].indexOf(name) !== -1) {
                                 return;
                             }
                         }
