@@ -1,3 +1,5 @@
+/* eslint-disable max-nested-callbacks, react/no-multi-comp */
+
 import {
     expect
 } from 'chai';
@@ -16,17 +18,9 @@ describe('strictPropTypes', () => {
         spy;
 
     beforeEach(() => {
-        spy = sinon.stub(console, `warn`);
+        spy = sinon.stub(console, 'warn');
 
-        global.document = jsdom.jsdom(`
-            <!DOCTYPE html>
-            <html>
-            <head>
-            </head>
-            <body>
-            </body>
-            </html>
-        `);
+        global.document = jsdom.jsdom('<!DOCTYPE html><html><head></head><body></body></html>');
 
         global.window = document.defaultView;
 
@@ -96,14 +90,16 @@ describe('strictPropTypes', () => {
     });
 
     afterEach(() => {
+        /* eslint-disable no-console */
         console.warn.restore();
+        /* eslint-enable no-console */
     });
 
     context('when React.Component is called with undefined property', () => {
         it('throws an error', () => {
             TestUtils.renderIntoDocument(<Foo unknownProperty='' />);
 
-            expect(spy.calledWithExactly(`Using undefined property "unknownProperty". Define the missing property in "Foo" component propTypes declaration.`)).to.equal(true);
+            expect(spy.calledWithExactly('Using undefined property "unknownProperty". Define the missing property in "Foo" component propTypes declaration.')).to.equal(true);
         });
     });
     context('when options.allowHTMLProps', () => {
@@ -112,7 +108,7 @@ describe('strictPropTypes', () => {
                 it('throws an error', () => {
                     TestUtils.renderIntoDocument(<Foo className='' />);
 
-                    expect(spy.calledWithExactly(`Using undefined property "className". Define the missing property in "Foo" component propTypes declaration.`)).to.equal(true);
+                    expect(spy.calledWithExactly('Using undefined property "className". Define the missing property in "Foo" component propTypes declaration.')).to.equal(true);
                 });
             });
         });
@@ -146,7 +142,7 @@ describe('strictPropTypes', () => {
                 it('throws an error', () => {
                     TestUtils.renderIntoDocument(<Baz clipPath='' />);
 
-                    expect(spy.calledWithExactly(`Using undefined property "clipPath". Define the missing property in "Baz" component propTypes declaration.`)).to.equal(true);
+                    expect(spy.calledWithExactly('Using undefined property "clipPath". Define the missing property in "Baz" component propTypes declaration.')).to.equal(true);
                 });
             });
         });

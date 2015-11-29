@@ -1,6 +1,6 @@
 /* eslint-disable no-console */
 
-import _ from './utils';
+import _ from 'lodash';
 import HTMLPropNames from './HTMLPropNames';
 import SVGPropNames from './SVGPropNames';
 import makeConfiguration from './makeConfiguration';
@@ -20,18 +20,18 @@ export default (Component, userConfiguration) => {
             _.forEach(nextProps, (value, name) => {
                 if (!Component.propTypes[name]) {
                     if (configuration.allowHTMLProps) {
-                        if (HTMLPropNames.indexOf(name) !== -1 || name.indexOf('data-') === 0 || name.indexOf('aria-') === 0) {
+                        if (_.indexOf(HTMLPropNames, name) !== -1 || _.indexOf(name, 'data-') === 0 || _.indexOf(name, 'aria-') === 0) {
                             return;
                         }
                     }
 
                     if (configuration.allowSVGProps) {
-                        if (SVGPropNames.indexOf(name) !== -1) {
+                        if (_.indexOf(SVGPropNames, name) !== -1) {
                             return;
                         }
                     }
 
-                    console.warn(`Using undefined property "${name}". Define the missing property in "${Component.displayName}" component propTypes declaration.`);
+                    console.warn('Using undefined property "' + name + '". Define the missing property in "' + Component.displayName + '" component propTypes declaration.');
                 }
             });
         }

@@ -1,10 +1,10 @@
-import _ from './utils';
+import _ from 'lodash';
 
 /**
  * @typedef StrictPropTypes~Options
  * @see {@link https://github.com/gajus/react-strict-prop-types#options}
- * @property {Boolean} allowHTMLPropTypes
- * @property {Boolean} allowSVGProps
+ * @property {boolean} allowHTMLPropTypes
+ * @property {boolean} allowSVGProps
  */
 
 /**
@@ -21,11 +21,11 @@ export default (userConfiguration = {}) => {
 
     _.forEach(userConfiguration, (value, name) => {
         if (typeof configuration[name] === 'undefined') {
-            throw new Error(`Unknown configuration property "${name}".`);
+            throw new Error('Unknown configuration property "' + name + '".');
         }
 
-        if (typeof value !== 'boolean') {
-            throw new Error(`"${name}" property value must be a boolean.`);
+        if (!_.isBoolean(value)) {
+            throw new Error('"' + name + '" property value must be a boolean.');
         }
 
         configuration[name] = value;
