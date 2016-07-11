@@ -44,11 +44,11 @@ export default (Component, userConfiguration) => {
             }
         }
 
-        componentWillReceiveProps (nextProps) {
+        componentWillReceiveProps (nextProps, nextContext) {
             this.validateProps(nextProps);
 
             if (super.componentWillReceiveProps) {
-                super.componentWillReceiveProps(nextProps);
+                super.componentWillReceiveProps(nextProps, nextContext);
             }
         }
     };
