@@ -1,4 +1,3 @@
-import _ from 'lodash';
 import strictPropTypes from './strictPropTypes';
 
 let decoratorConstructor,
@@ -28,7 +27,7 @@ decoratorConstructor = (options) => {
 };
 
 export default (...args) => {
-    if (_.isFunction(args[0])) {
+    if (typeof args[0] === 'function') {
         return functionConstructor(args[0], args[1]);
     } else {
         return decoratorConstructor(args[0]);
