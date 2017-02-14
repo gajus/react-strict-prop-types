@@ -26,7 +26,8 @@
     "pragmatist": "^1.8.0",
     "react": "^0.14.3",
     "react-addons-test-utils": "^0.14.3",
-    "sinon": "^1.17.2"
+    "sinon": "^1.17.2",
+    "lodash": "^4.13.1"
   },
   "scripts": {
     "pragmatist": "node ./node_modules/.bin/pragmatist",
@@ -35,7 +36,5 @@
     "build": "npm run pragmatist build",
     "watch": "npm run pragmatist watch"
   },
-  "dependencies": {
-    "lodash": "^3.10.1"
-  }
+  "dependencies": { }
 }
